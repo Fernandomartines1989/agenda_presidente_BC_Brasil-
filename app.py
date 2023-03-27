@@ -87,3 +87,8 @@ def dedoduro():
   mensagem = {"chat_id": TELEGRAM_ADMIN_ID, "text": "Alguém acessou a página dedo duro!"}
   requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data=mensagem)
   return "Mensagem enviada."
+
+@app.route("/dedoduro2")
+def dedoduro2():
+  sheet.append_row(["Fernando", "Martines", "a partir do Flask"])
+  return "Planilha escrita!"
