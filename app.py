@@ -1,11 +1,23 @@
 import os
-
+import gspread
 import requests
+
 from flask import Flask
+from oauth2client.service_account import ServiceAccountCredentials
 from tchan import ChannelScraper
+
+
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
+GOOGLE_SHEETS_CREDENTIALS = os.envriron["GOOGLE_SHEETS_CREDENTIALS"]
+with open ("credenciais.json", mode="w") as fobj:
+  fobj.write(GOOGLE_SHEETS_CREDENTIALS)
+conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
+
+api = gspread.authorize(conta) # sheets.new
+planilha = api.open_by_key("1ZDyxhXlCtCjMbyKvYmMt_8jAKN5JSoZ7x3MqlnoyzAM")
+sheet = planilha.worksheet("Sheet1")
 
 
 app = Flask(__name__)
