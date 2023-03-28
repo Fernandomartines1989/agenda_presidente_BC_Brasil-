@@ -91,7 +91,7 @@ def dedoduro():
 @app.route("/dedoduro2")
 def dedoduro2():
   sheet.append_row(["Fernando", "Martines", "a partir do Flask"])
-  return "Planilha escrita!".
+  return "Planilha escrita!."
 
 @app.route("/telegram-bot", methods=["POST"])
 def telegram_bot():
