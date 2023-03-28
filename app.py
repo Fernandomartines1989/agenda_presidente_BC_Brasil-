@@ -10,7 +10,7 @@ from tchan import ChannelScraper
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
-GOOGLE_SHEETS_CREDENTIALS = os.envriron["GOOGLE_SHEETS_CREDENTIALS"]
+GOOGLE_SHEETS_CREDENTIALS = os.environ["GOOGLE_SHEETS_CREDENTIALS"]
 with open ("credenciais.json", mode="w") as fobj:
   fobj.write(GOOGLE_SHEETS_CREDENTIALS)
 conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
