@@ -4,7 +4,7 @@ import requests
 import getpass
 import requests 
 
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from datetime import datetime
 from flask import Flask, request
 from oauth2client.service_account import ServiceAccountCredentials
