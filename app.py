@@ -48,11 +48,10 @@ def telegram_bot():
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
   nova_mensagem = {"chat_id": chat_id, "text": agenda_BC}
-  requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
   if message == "/start":
-    texto_resposta = "Olá! Seja bem-vinda(o). Quer saber a Agenda do Presidente do Banco Central do Brasil de {hoje} ?. Digite Sim"
+    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data="Olá! Seja bem-vinda(o). Quer saber a Agenda do Presidente do Banco Central do Brasil de hoje ?. Digite sim - em minúsculo")
   elif message == "sim":
-    texto_resposta = agenda_BC
+    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
   else:
-    texto_resposta = "Não entendi! Digite /start para eu te contar que eu posso fazer"
+        texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data="Não entendi. Digite /start para eu te dizer o que eu posso fazer")
   return "ok"
