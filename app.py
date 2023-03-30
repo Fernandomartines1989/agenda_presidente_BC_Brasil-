@@ -12,8 +12,9 @@ from flask import Flask, request
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
 
-hoje = datetime.now().strftime("%Y-%m-%d")
-requisicao = requests.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
+data_hoje = datetime.now().strftime("%Y-%m-%d")
+
+requisicao = requests.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{data_hoje}%27&fimAgenda=%27{data_hoje}%27")
 html = BeautifulSoup(requisicao.content)
 agenda_BC = html.find("div").text
 
@@ -44,6 +45,7 @@ def contato():
 
 @app.route("/telegram-bot", methods=["POST"])
 def telegram_bot():
+  hoje = datetime.now().strftime("%Y-%m-%d")
   update = request.json
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
