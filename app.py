@@ -53,5 +53,5 @@ def telegram_bot():
   elif message == "sim":
     texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
   else:
-        texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data="Não entendi. Digite /start para eu te dizer o que eu posso fazer")
+    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data="Não entendi. Digite /start para eu te dizer o que eu posso fazer")
   return "ok"
