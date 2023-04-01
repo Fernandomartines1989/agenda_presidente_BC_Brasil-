@@ -14,9 +14,12 @@ TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
 hoje = datetime.now().strftime("%Y-%m-%d")
 
 requisicao = requests.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
-html = BeautifulSoup(requisicao.content)
-agenda_BC = html.find("div").text
-
+html = BeautifulSoup(requisicao.content, 'html.parser')
+div_element = html.find("div")
+if div_element is not None:
+    agenda_BC = div_element.text
+else:
+    agenda_BC = "Hoje o presidente do Banco Central não tem agenda."
 
 
 app = Flask(__name__)
