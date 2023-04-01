@@ -1,7 +1,6 @@
 import os
 import requests
 import getpass
-import requests 
 
 from bs4 import BeautifulSoup
 from datetime import datetime
