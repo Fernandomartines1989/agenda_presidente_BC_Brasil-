@@ -18,6 +18,7 @@ html = BeautifulSoup(requisicao.content)
 agenda_BC = html.find("div").text
 
 
+
 app = Flask(__name__)
 
 
