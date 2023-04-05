@@ -6,10 +6,19 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from flask import Flask, request
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
+
+scope = ['https://www.googleapis.com/auth/drive']
+creds_dict = json.loads(os.environ['GOOGLE_SHEETS_CREDENTIALS'])
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+client = gspread.authorize(creds)
+sheet = client.open('agenda_presidente_BC').sheet1
 
 hoje = datetime.now().strftime("%Y-%m-%d")
 
@@ -41,7 +50,19 @@ def sobre():
 
 @app.route("/agenda_presidente_BC")
 def agenda():
-  hoje = datetime.now().strftime("%d-%m-%Y")  
+  hoje = datetime.now().strftime("%d-%m-%Y")
+  
+  # Procura se já existe uma linha para o dia atual
+  data = sheet.col_values(1)
+  if hoje in data:
+    index = data.index(hoje) + 1
+  else:
+    index = len(data) + 1
+  
+  # Adiciona a nova linha
+  sheet.update_cell(index, 1, hoje)
+  sheet.update_cell(index, 2, agenda_BC)
+
   return "A agenda do presidente do Banco Central de " + hoje + " é: " + agenda_BC
 
 
