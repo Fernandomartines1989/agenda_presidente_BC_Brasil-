@@ -1,6 +1,7 @@
 import os
 import requests
 import getpass
+import json
 
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -20,7 +21,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 sheet = client.open('agenda_presidente_BC').sheet1
 
-hoje = datetime.now().strftime("%Y-%m-%d")
+hoje = datetime.now().strftime("%d-%m-%Y")
 
 requisicao = requests.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
 html = BeautifulSoup(requisicao.content, 'html.parser')
