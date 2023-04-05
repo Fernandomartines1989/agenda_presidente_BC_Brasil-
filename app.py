@@ -27,7 +27,7 @@ app = Flask(__name__)
 
     
 menu = """
-<a href="/">Página inicial</a> | <a href="/sobre">Sobre</a> | <a href="/contato">Contato</a>
+<a href="/">Página inicial</a> | <a href="/sobre">Sobre</a> | <a href="/agenda_presidente_BC">Agenda do Presidente do Banco Central hoje</a>
 <br>
 """
 
@@ -39,9 +39,10 @@ def index():
 def sobre():
   return menu + "Sou jornalista e moro no Brasil"
 
-@app.route("/contato")
-def contato():
-  return menu + "Meu contato: fernandomartines0@gmail.com"
+@app.route("/agenda_presidente_BC")
+def agenda():
+  hoje = datetime.now().strftime("%d-%m-%Y")  
+  return agenda_BC
 
 
 
