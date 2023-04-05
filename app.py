@@ -19,7 +19,7 @@ scope = ['https://www.googleapis.com/auth/drive']
 creds_dict = json.loads(os.environ['GOOGLE_SHEETS_CREDENTIALS'])
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
-sheet = client.open('agenda_presidente_BC').sheet1
+sheet = client.open('exercicio_robo').sheet1
 
 hoje = datetime.now().strftime("%d-%m-%Y")
 
