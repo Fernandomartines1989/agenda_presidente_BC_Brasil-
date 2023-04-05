@@ -42,7 +42,7 @@ def sobre():
 @app.route("/agenda_presidente_BC")
 def agenda():
   hoje = datetime.now().strftime("%d-%m-%Y")  
-  return agenda_BC
+  return "A agenda do presidente do Banco Central de" + hoje + "é: " + agenda_BC
 
 
 
