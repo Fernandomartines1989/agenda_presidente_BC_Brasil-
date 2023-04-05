@@ -21,7 +21,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 sheet = client.open('exercicio_robo').sheet1
 
-hoje = datetime.now().strftime("%d-%m-%Y")
+hoje = datetime.now().strftime("%Y-%m-%d")
 
 requisicao = requests.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
 html = BeautifulSoup(requisicao.content, 'html.parser')
