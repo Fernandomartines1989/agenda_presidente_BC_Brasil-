@@ -1,0 +1,16 @@
+# agenda_presidente_BC_Brasil-
+- A "Agenda Presidente do BC" é um robô feito em linguagem python, usando as bibliotecas do Telegram e do Google Sheets. 
+- O objetivo é mostrar diariamente qual é a agenda oficial do presidente do Banco Central, que é divulgado dentro do site da instituição. 
+- O robô raspa essa informação e entrega em dois ambientes: no bot de telegram @Agenda_BC_bot e no site https://site-teste-fernando-martines.onrender.com/agenda_presidente_BC
+- Um gatilho for armado para todo dia às 11h, horário de Brasília, acessar o site usando o serviço do Pipedream
+- Quando o site é acessado, automaticamente uma planilha de Google Sheets é preenchida com duas colunas: dia e a descrição dos compromissos do dia
+- Se o site é acessado mais de uma vez por dia, o código tem uma condição na qual a linha só é preenchida uma vez para cada data. 
+- Isso impede que linhas iguais sejam inseridas na planilha
+- Até onde eu sei não existe uma base de dados que reguistre todos os eventos do presidente do BC
+- Essa planilha é um modo de saber como ele tem usado o tempo, quais eventos oficiais tem atendido e qualquer outra análise
+- O dataframe de um ano inteiro pode gerar muitos insights e pautas
+- O bot do Telegram tem uma usabilidade amigável> em vez de entrar no site do BC, ir na agenda das autoridades, você pode apenas manda "Sim" e receber a agenda
+- Porém esse não é o ideal: o ideal é que esse bot comande um canal no Telegram. 
+- Dessa forma, todo dia os interessados irão receber um push no Telegram com a agenda do dia do presidente do BC sme fazer nada
+- Pretendo implementar esse próximo passo em breve 
+- O site roda nos servidores da Render
