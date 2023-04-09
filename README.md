@@ -11,6 +11,6 @@
 - O dataframe de um ano inteiro pode gerar muitos insights e pautas
 - O bot do Telegram tem uma usabilidade amigável: em vez de entrar no site do BC, ir na agenda das autoridades, você pode apenas mandar "Sim" e receber a agenda
 - Porém esse não é o ideal: o ideal é que esse bot comande um canal no Telegram. 
-- Dessa forma, todo dia os interessados irão receber um push no Telegram com a agenda do dia do presidente do BC sme fazer nada
+- Dessa forma, todo dia os interessados irão receber um push no Telegram com a agenda do dia do presidente do BC sem fazer nada
 - Pretendo implementar esse próximo passo em breve 
 - O site roda nos servidores da Render
